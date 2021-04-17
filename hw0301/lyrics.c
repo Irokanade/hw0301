@@ -123,6 +123,7 @@ int lyrics() {
     
     printf("%s", reset);
     //printf("%s", "reset\n");
+    fclose(pFile);
     
     return 0;
 }
