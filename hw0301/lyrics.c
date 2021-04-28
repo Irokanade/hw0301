@@ -17,6 +17,8 @@
 #define MAG "\e[0;35m"
 #define CYN "\e[0;36m"
 #define WHT "\e[0;37m"
+#define REDWHT "\033[1;97;101m"
+#define BLUWHT "\033[1;97;104m"
 //Reset
 #define reset "\e[0m"
 
@@ -46,8 +48,8 @@ int lyrics() {
     singerList[3].colour = BLU;
     singerList[4].colour = MAG;
     singerList[5].colour = CYN;
-    singerList[6].colour = WHT;
-    singerList[7].colour = BLK;
+    singerList[6].colour = REDWHT;
+    singerList[7].colour = BLUWHT;
     
     
     printf("Open a LRC file: ");
@@ -90,13 +92,13 @@ int lyrics() {
         timeStamp stamp;
         char strTemp[129] = {0};
         
-        
         int valid = fscanf(pFile, "[%ld:%ld.%ld]", &stamp.minutes, &stamp.seconds, &stamp.milliseconds);
         if(valid == 3) {
             fgets(stamp.lyricsTxt, 129, pFile);
             //printf("valid: %d\n", valid);
                     do time(&end); while(difftime(end, start) <= stamp.minutes*60 + stamp.seconds + stamp.milliseconds*0.01);
-            printf("[%ld:%ld.%ld]%s", stamp.minutes, stamp.seconds, stamp.milliseconds, stamp.lyricsTxt);
+            //printf("[%ld:%ld.%ld]%s", stamp.minutes, stamp.seconds, stamp.milliseconds, stamp.lyricsTxt);
+            printf("%s", stamp.lyricsTxt);
             
         } else {
             fgets(strTemp, 129, pFile);
@@ -116,13 +118,13 @@ int lyrics() {
                 printf("name: %s", strTemp);
             } else {
                 //label
-                printf("label: %s", strTemp);
+                //printf("label: %s", strTemp);
             }
         }
     }
     
     printf("%s", reset);
-    //printf("%s", "reset\n");
+    printf("%s", "reset\n");
     fclose(pFile);
     
     return 0;
