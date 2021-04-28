@@ -115,7 +115,7 @@ int lyrics() {
                     singerListIndex++;
             }
                 printf("%s", singerList[index].colour);
-                printf("name: %s", strTemp);
+                //printf("name: %s", strTemp);
             } else {
                 //label
                 //printf("label: %s", strTemp);
